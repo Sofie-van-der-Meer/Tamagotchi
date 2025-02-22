@@ -10,6 +10,8 @@ import World from './World/World.js'
 import sourcesModels from './sourcesModels.js'
 import sourcesMeshes from './sourcesMeshes.js'
 import DomManupulation from './DomManupulation.js'
+import makeScene from './Scene.js'
+import Scene from './Scene.js'
 
 let instance = null;
 
@@ -22,16 +24,31 @@ export default class Experience {
         this.debug = new Debug()
         this.sizes = new Sizes()
         this.time = new Time()
-        this.scene = new THREE.Scene()
+        this.scenes = []
+        // this.scenes.scene1 = new Scene('#scene1')
+        // console.log(this.scenes.scene1);
+        // const scene = new THREE.Scene() // this is wath we need!!
+        // this.scene1 = makeScene(document.querySelector('scene1')).scene
+        // this.scene2 = makeScene(document.querySelector('scene2')).scene
         this.resourcesModels = new Resources(sourcesModels)
         this.resourcesMeshes = sourcesMeshes
-        this.camera = new Camera()
+        // this.camera = new Camera()
         this.renderer = new Renderer()
         this.world = new World()
         this.dom = new DomManupulation()
 
+        this.setScenes()
+
         this.sizes.on('resize', () => this.resize());
         this.time.on('tick', () => this.update());
+    }
+
+    setScenes() {
+        this.sceneOne = new Scene('sceneOne')
+        this.sceneTwo = new Scene('sceneTwo')
+
+        this.scenes.push(this.sceneOne)
+        this.scenes.push(this.sceneTwo)
     }
     
     resize()
@@ -42,9 +59,9 @@ export default class Experience {
 
     update()
     {
-        this.camera.update()
-        this.world.update()
-        this.renderer.update()
+        // this.camera.update()
+        // this.world.update()
+        // this.renderer.update()
     }
     
     destroy() {

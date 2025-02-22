@@ -9,10 +9,298 @@
 </head>
 <body>
     <canvas class="webgl"></canvas>
-    <header>
-        <h1>Tamagotchi</h1>
+    
+    <header class="header">
+        <div class="headerLogo logo">
+            <i class="fa-solid fa-cubes-stacked fa-3x"></i>
+        </div>
+        
+        <nav class="headerNav nav">
+            <ul class="headerNav__list nav__list">
+                <li class="headerNav__element nav__element">
+                    <a href="#" class="headerNav__link nav__link header__link link">Home</a>
+                </li>
+                <li class="headerNav__element nav__element">
+                    <a href="#" class="headerNav__link nav__link header__link link">Our Concept</a>
+                </li>
+                <li class="headerNav__element nav__element">
+                    <a href="#" class="headerNav__link nav__link header__link link">Features</a>
+                </li>
+                <li class="headerNav__element nav__element">
+                    <a href="#" class="headerNav__link nav__link header__link link">FAQ</a>
+                </li>
+                <li class="headerNav__element nav__element">
+                    <a href="#" class="headerNav__link nav__link header__link link">Contact</a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="headerAction">
+            <a href="#fundraiser" class="headerAction__actionButton actionButton header__link link">Join the Fundraiser</a>
+        </div>
     </header>
 
+    <section class="landing parentScenes">
+        <section class="landingCard">
+            <a href="#" class="landingCard__label link">Why VampiTest</a>
+            <h1 class="landingCard__title">Your Blood Sugar on Track. With a Vampire Twist.</h1>
+            <p class="landingCard__body">
+                VampiTest combines essential blood sugar monitoring with a playful, interactive experience. Our device offers you a seamless, accurate way to measure your insulin levels while taking care of your very own vampire pet. Forget about tedious health routines—VampiTest makes managing your health engaging, rewarding, and fun.
+            </p>
+        </section>
+
+        <figure id="sceneOne" class="sceneOne scene"></figure>
+
+        <figure id="sceneTwo" class="sceneTwo scene"></figure>        
+    </section>
+
+
+
+    <section class="banner banner--light">
+        <p class="banner__body">
+            No matter what your blood sugar level is, your vampire knows exactly how to react.
+        </p>
+    </section>
+
+    <section class="cardgroup">
+        <section class="card bg-color--purple">
+            <a href="#" class="card__label link">Support the Vision</a>
+            <h2 class="card__title">Bring VampiTest to Life</h2>
+            <p class="card__body">
+                We're turning VampiTest from concept to reality—and we need your help! By joining our crowdfunding campaign, you can be a part of this exciting project and help us bring this fun, interactive health device to life. With your support, we can create a unique way to manage blood sugar while having fun. Let's make it happen!
+            </p>
+            <div class="card__actionButton actionButton">
+                <a href="#" class="link">Support Our Campaign</a>
+            </div>
+        </section>
+        <section class="card bg-color--grey">
+            <a href="#" class="card__label link">Take a Break</a>
+            <h2 class="card__title">Play Bat-Bat</h2>
+            <p class="card__body">
+                Need a break from testing? Play Bat-Bat! In this mini-game, help your vampire avoid being hit by a baseball bat. Press the button to jump into a bat and soar safely above the bat's path. It’s a fun way to keep your vampire (and you) entertained while staying on top of your health.
+            </p>
+            <div class="card__actionButton actionButton">
+                <a href="#" class="link">Play Now</a>
+            </div>
+        </section>
+    </section>
+
+    <section class="banner banner--dark">
+        <p class="banner__body">
+            With VampiTest, every blood sugar test is more than just a health check—it’s a chance to bond with your vampire and make sure they’re thriving.
+        </p>
+        <a href="" class="banner__actionLink">Start the Journey Now</a>
+    </section>
+
+    <section class="parentTable">
+        <section class="card">
+            <a href="#" class="card__label link">Product Features</a>
+            <h2 class="card__title title--contour">You Give Blood, <br> Vampire Reacts</h2>
+            <figure id="sceneThree" class="sceneThree scene"></figure>
+            <p class="card__body">
+                At VampiTest, we want you to focus on what really matters—your health. That’s why we created a playful, interactive way to test your blood sugar. VampiTest takes care of the rest, from tracking your levels to entertaining you with your vampire companion. No hassle, just a fun and accurate health management experience.
+            </p>
+            <div class="card__actionButton actionButton">
+                <a href="#" class="link">Learn More</a>
+            </div>
+        </section>
+        <section class="table">
+            <h3 class="table__title">General Information</h3>
+            <details class="table__details">
+                <summary class="table__summary">Product Name</summary>
+                VampiTest
+            </details>
+            <details class="table__details">
+                <summary class="table__summary">Device Type</summary>
+                Blood Sugar Measurement Device with Interactive Tamagotchi Feature
+            </details>
+            <details class="table__details">
+                <summary class="table__summary">Display Type</summary>
+                LCD Display with 3 Button Interface (subject to design finalization)
+            </details>
+            <details class="table__details">
+                <summary class="table__summary">Other</summary>
+                <details class="table__details">
+                    <summary class="table__summary">Power Source</summary>
+                    Rechargeable Battery (USB Charging)
+                </details>
+                <details class="table__details">
+                    <summary class="table__summary">Battery Life</summary>
+                    Expected up to 3 days per charge (dependent on usage)
+                </details>
+                <details class="table__details">
+                    <summary class="table__summary">Size</summary>
+                    Compact and portable design (dimensions subject to final design)
+                </details>
+                <details class="table__details">
+                    <summary class="table__summary">Weight</summary>
+                    Estimated at 150g (device only)
+                </details>
+                <details class="table__details">
+                    <summary class="table__summary">Water Resistance</summary>
+                    IPX4 rating (splashproof design for safe use in the kitchen or bathroom)
+                </details>
+                <details class="table__details">
+                    <summary class="table__summary">Sunlight Resistance</summary>
+                    Built to withstand sunlight exposure, ensuring your vampire stays safe even on bright, sunny days!
+                </details>                
+            </details>           
+
+            <h3 class="table__title">Measurement Specifications</h3>
+            <details class="table__details">
+                <summary class="table__summary">Measurement Range</summary>
+                Expected range from 20 mg/dL - 600 mg/dL
+            </details>
+            <details class="table__details">
+                <summary class="table__summary">Accuracy</summary>
+                Anticipated accuracy ±15 mg/dL (or 5% of reading, whichever is higher)
+            </details>
+            <details class="table__details">
+                <summary class="table__summary">Test Time</summary>
+                Approximately 5 seconds for blood glucose level reading
+            </details>
+            <details class="table__details">
+                <summary class="table__summary">Other</summary>
+                <details class="table__details">
+                    <summary class="table__summary">Blood Sample Size</summary>
+                    Estimated at 0.5 µL
+                </details>
+                <details class="table__details">
+                    <summary class="table__summary">Test Strips</summary>
+                    Compatible with standard glucose test strips (final compatibility to be confirmed)
+                </details>
+                <details class="table__details">
+                    <summary class="table__summary">Technology</summary>
+                    Using an advanced electrochemical sensor for precise measurement (final tech specs to be finalized)
+                </details>
+            </details> 
+
+            <h3 class="table__title">Interactive Features</h3>
+            <details class="table__details">
+                <summary class="table__summary">Vampire Companion</summary>
+                A Tamagotchi-style vampire pet that reacts to blood sugar levels
+            </details>
+            <details class="table__details">
+                <summary class="table__summary">Game</summary>
+                <em>Bat-Bat</em>—Help your vampire avoid a baseball bat by jumping into a bat!
+            </details>
+            <details class="table__details">
+                <summary class="table__summary">Alerts & Reminders</summary>
+                Customizable blood sugar testing reminders with playful sounds from the vampire
+            </details>
+            <details class="table__details">
+                <summary class="table__summary">Other</summary>
+                <details class="table__details">
+                    <summary class="table__summary">Resting Mode</summary>
+                    Represented by a coffin that opens and closes depending on the vampire's health (closed when asleep, open when awake)
+                </details>
+                <details class="table__details">
+                    <summary class="table__summary">Personalized Feedback</summary>
+                    Planned tips and suggestions for better blood sugar management from your vampire
+                </details>
+                <details class="table__details">
+                    <summary class="table__summary">Hygiene Management</summary>
+                    Reminders to clean the device after use, and periodic "dead body" clean-up for your vampire's hygiene
+                </details>                
+            </details>    
+
+            
+            <h3 class="table__title">Design & Customization</h3>
+            <details class="table__details" open>
+                <summary class="table__summary">Color Options</summary>
+                <label><input type="radio" class="inputColor" data-color="#000000" name="coverColor" id="MidnightBlack"></label>
+                <label><input type="radio" class="inputColor" data-color="#B41C1C" name="coverColor" id="VampireRed"></label>
+                <label><input type="radio" class="inputColor" data-color="#8C8C8C" name="coverColor" id="BloodMoonSilver"></label>
+                <label><input type="radio" class="inputColor" data-color="#6A4C9C" name="coverColor" id="ShadowPurple"></label>
+                <label><input type="radio" class="inputColor" data-color="#F4F4F4" name="coverColor" id="PhantomWhite"></label>
+            </details>
+            <details class="table__details">
+                <summary class="table__summary">Cover Material</summary>
+                Durable, soft-touch plastic with anti-slip finish (subject to material testing)
+            </details>
+            <details class="table__details">
+                <summary class="table__summary">Shape</summary>
+                Ergonomic, sleek design (final form factor to be refined)
+            </details>
+            
+            <h3 class="table__title">Connectivity & Integration</h3>
+            <details class="table__details">
+                <summary class="table__summary">Bluetooth Connectivity</summary>
+                Expected sync with VampiTest companion app for tracking and data storage
+            </details>
+            <details class="table__details">
+                <summary class="table__summary">App Compatibility</summary>
+                Planned availability for both iOS and Android
+            </details>
+            <details class="table__details">
+                <summary class="table__summary">Data Export</summary>
+                Anticipated ability to export blood sugar data to PDF or CSV format for sharing with healthcare providers
+            </details>
+            <details class="table__details">
+                <summary class="table__summary">Cloud Storage</summary>
+                Planned secure cloud storage for historical blood sugar readings and vampire progress
+            </details>
+            
+        </section>
+    </section>
+    <footer class="footer banner--dark">
+        <nav class="footerNav nav">
+            <ul class="footerNav__list nav__list">
+                <li class="footerNav__element nav__element navElement">
+                    <h4 class="navElement__title">Our Concept</h4>
+                    <ul class="navElement__list">
+                        <li class="navElement_element">
+                            <a href="#" class="navElement__link link">What is VampiTest?</a>
+                        </li>
+                        <li class="navElement_element">
+                            <a href="#" class="navElement__link link">Features & Benefits</a>
+                        </li>
+                        <li class="navElement_element">
+                            <a href="#" class="navElement__link link">How It Works</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="footerNav__element nav__element navElement">
+                    <h4 class="navElement__title">Our Journey</h4>
+                    <ul class="navElement__list">
+                        <li class="navElement_element">
+                            <a href="#" class="navElement__link link">About Us</a>
+                        </li>
+                        <li class="navElement_element">
+                            <a href="#" class="navElement__link link">The Vision</a>
+                        </li>
+                        <li class="navElement_element">
+                            <a href="#" class="navElement__link link">Get Involved</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="footerNav__element nav__element navElement">
+                    <h4 class="navElement__title">Help</h4>
+                    <ul class="navElement__list">
+                        <li class="navElement_element">
+                            <a href="#" class="navElement__link link">FAQ</a>
+                        </li>
+                        <li class="navElement_element">
+                            <a href="#" class="navElement__link link">Contact Us</a>
+                        </li>
+                        <li class="navElement_element">
+                            <a href="#" class="navElement__link link">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <section class="footerEnd">
+            <div class="footerLogo logo">
+                <i class="fa-solid fa-cubes-stacked fa-5x"></i>
+                <hgroup class="hgroup">
+                    <h1 class="hgroup__title">VampiTest</h1>
+                    <h1 class="hgroup__title title--contour">Blood Sugar on Track</h1>
+                </hgroup>
+            </div>
+            <p class="copyright">&copy; 2025 VampiTest. All Rights Reserved.</p>
+        </section>
+    </footer>
     <script type="module" src="./script.js"></script>
 </body>
 </html>

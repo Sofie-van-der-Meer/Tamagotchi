@@ -1,9 +1,9 @@
 export default [
     {
-        name: 'fox',
+        name: 'device',
         type: 'gltfModel',
-        path: 'models/Fox/glTF/Fox.gltf',
-        scale: 0.02,
+        path: 'models/TamagotchiDevice/tamagotchi_2.glb',
+        scale: 1,
         position: [0, 0]
     }
 ]

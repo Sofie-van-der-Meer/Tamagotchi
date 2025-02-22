@@ -22,7 +22,7 @@ export default class Model
         // }
 
         this.setModel()
-        this.setAnimation()
+        // this.setAnimation()
     }
 
     setModel()
@@ -32,7 +32,7 @@ export default class Model
             this.sourceModel.scale)
         this.model.position.x = this.startPosition[0]
         this.model.position.z = this.startPosition[1]
-        this.scene.add(this.model)
+        // this.scene.add(this.model)
 
         this.model.traverse((child) => child.castShadow = (child instanceof THREE.Mesh))
     }

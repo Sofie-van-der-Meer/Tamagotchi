@@ -17,13 +17,13 @@ export default class World
     setModels() {
         this.resourcesModels.on('ready', () =>
         {
-            this.model = new Model('fox', 'Survey')
+            this.device = new Model('device')
         })
     }
 
     setMeshes() {
-        this.grass = new Mesh('grass')
-        this.soil = new Mesh('soil')
+        // this.grass = new Mesh('grass')
+        // this.soil = new Mesh('soil')
         this.environment = new Environment()
     }
 

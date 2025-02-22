@@ -5,60 +5,60 @@ export default class Environment
 {
     constructor()
     {
-        this.experience = new Experience()
-        this.scene = this.experience.scene
-        this.resources = this.experience.resources
-        this.debug = this.experience.debug
+        // this.experience = new Experience()
+        // this.scene = this.experience.scene
+        // this.resources = this.experience.resources
+        // this.debug = this.experience.debug
         
         // Debug
-        if(this.debug.active)
-        {
-            this.debugFolder = this.debug.ui.addFolder('environment')
-        }
+        // if(this.debug.active)
+        // {
+        //     this.debugFolder = this.debug.ui.addFolder('environment')
+        // }
 
         this.setSunLight()
     }
 
     setSunLight()
     {
-        this.sunLight = new THREE.DirectionalLight('#ffffff', 1.5)
+        this.sunLight = new THREE.DirectionalLight('#ffffff', 5)
         this.sunLight.castShadow = true
         this.sunLight.shadow.camera.far = 30
         this.sunLight.shadow.mapSize.set(1024, 1024)
         this.sunLight.shadow.normalBias = 0
-        this.sunLight.position.set(19.5, 6.5, 7.3)
-        this.scene.add(this.sunLight)
+        this.sunLight.position.set(-1, 12.6, 22.5)
+        // this.scene.add(this.sunLight)
 
         // Debug
-        if(this.debug.active)
-        {
-            this.debugFolder
-                .add(this.sunLight, 'intensity')
-                .name('sunLightIntensity')
-                .min(0)
-                .max(10)
-                .step(0.001)
+        // if(this.debug.active)
+        // {
+        //     this.debugFolder
+        //         .add(this.sunLight, 'intensity')
+        //         .name('sunLightIntensity')
+        //         .min(0)
+        //         .max(10)
+        //         .step(0.001)
             
-            this.debugFolder
-                .add(this.sunLight.position, 'x')
-                .name('sunLightX')
-                .min(- 5)
-                .max(50)
-                .step(0.001)
+        //     this.debugFolder
+        //         .add(this.sunLight.position, 'x')
+        //         .name('sunLightX')
+        //         .min(- 5)
+        //         .max(50)
+        //         .step(0.001)
             
-            this.debugFolder
-                .add(this.sunLight.position, 'y')
-                .name('sunLightY')
-                .min(- 5)
-                .max(50)
-                .step(0.001)
+        //     this.debugFolder
+        //         .add(this.sunLight.position, 'y')
+        //         .name('sunLightY')
+        //         .min(- 5)
+        //         .max(50)
+        //         .step(0.001)
             
-            this.debugFolder
-                .add(this.sunLight.position, 'z')
-                .name('sunLightZ')
-                .min(- 5)
-                .max(50)
-                .step(0.001)
-        }
+        //     this.debugFolder
+        //         .add(this.sunLight.position, 'z')
+        //         .name('sunLightZ')
+        //         .min(- 5)
+        //         .max(50)
+        //         .step(0.001)
+        // }
     }
 }
