@@ -1,7 +1,6 @@
 import Experience from "./scripts/Experience.js";
 
-const canvas = document.querySelector('canvas.webgl')
-new Experience(canvas);
+new Experience();
 
 // const dialogIntroScreen = document.getElementById('introScreen')
 // const dialogIntroGame = document.getElementById('introGame')
@@ -10,7 +9,6 @@ new Experience(canvas);
 // function isTouchDevice() {
 //     return 'ontouchstart' in window || navigator.maxTouchPoints > 0
 // }
-
 
 // fullScreenBtn.addEventListener('click', () => {
 //     if (!document.fullscreenElement) {
@@ -31,9 +29,6 @@ new Experience(canvas);
 // if (screen.width < screen.height) {
 //     alert('set your device on landscape ')
 // }
-
-
-
 
 // const playBtns = document.querySelectorAll('.play')
 // playBtns.forEach(btn => {

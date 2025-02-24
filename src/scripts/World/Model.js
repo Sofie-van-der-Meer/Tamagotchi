@@ -16,10 +16,10 @@ export default class Model
         this.sourceModel =      this.resources.sources.find(obj => obj.name == _sourcesName)
         this.startPosition =    this.sourceModel.position
 
-        // if (this.debug.active)
-        // {
-        //     this.debugFolder = this.debug.ui.addFolder(_sourcesName)
-        // }
+        if (this.debug.active)
+        {
+            this.debugFolder = this.debug.ui.addFolder(_sourcesName)
+        }
 
         this.setModel()
         // this.setAnimation()
@@ -32,7 +32,7 @@ export default class Model
             this.sourceModel.scale)
         this.model.position.x = this.startPosition[0]
         this.model.position.z = this.startPosition[1]
-        // this.scene.add(this.model)
+        this.scene.add(this.model)
 
         this.model.traverse((child) => child.castShadow = (child instanceof THREE.Mesh))
     }
@@ -51,7 +51,7 @@ export default class Model
         this.animation.actions.current.play()
         // this.playAnimation('Survey')
 
-        // Debug (not activated now)
+        // Debug 
         // if (this.debug.active)
         // {
         //     const debugObject = {}

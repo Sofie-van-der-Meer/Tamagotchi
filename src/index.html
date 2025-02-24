@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="./style.css">
     <script src="https://kit.fontawesome.com/6d66c3d9c5.js" crossorigin="anonymous"></script>
 </head>
-<body>
-    <canvas class="webgl"></canvas>
-    
+<body>    
     <header class="header">
         <div class="headerLogo logo">
             <i class="fa-solid fa-cubes-stacked fa-3x"></i>
@@ -49,9 +47,9 @@
             </p>
         </section>
 
-        <figure id="sceneOne" class="sceneOne scene"></figure>
+        <canvas id="canvasOne" class="canvasOne webgl" data-camera="Perspective" data-control="true"></canvas>
 
-        <figure id="sceneTwo" class="sceneTwo scene"></figure>        
+        <canvas id="canvasTwo" class="canvasTwo webgl" data-camera="OrthographicBig" data-control="false"></canvas>        
     </section>
 
 
@@ -96,7 +94,7 @@
         <section class="card">
             <a href="#" class="card__label link">Product Features</a>
             <h2 class="card__title title--contour">You Give Blood, <br> Vampire Reacts</h2>
-            <figure id="sceneThree" class="sceneThree scene"></figure>
+            <canvas id="canvasThree" class="canvasThree webgl" data-camera="Orthographic" data-control="false"></canvas>
             <p class="card__body">
                 At VampiTest, we want you to focus on what really matters—your health. That’s why we created a playful, interactive way to test your blood sugar. VampiTest takes care of the rest, from tracking your levels to entertaining you with your vampire companion. No hassle, just a fun and accurate health management experience.
             </p>

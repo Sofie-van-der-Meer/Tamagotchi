@@ -2,9 +2,10 @@ import EventEmitter from './EventEmitter.js'
 
 export default class Sizes extends EventEmitter
 {
-    constructor()
+    constructor(_canvas)
     {
         super()
+        this.canvas = _canvas
 
         // Resize event
         this.setSizes()
@@ -16,10 +17,10 @@ export default class Sizes extends EventEmitter
         })
     }
     setSizes() {
-        this.height = window.innerHeight
-        this.width = window.innerWidth - 8 // 0.5rem aka 0.5 * 16px would be a variable
-
         this.pixelRatio = Math.min(window.devicePixelRatio, 2)
+
+        this.height = this.canvas.clientHeight // * this.pixelRatio
+        this.width = this.canvas.clientWidth // * this.pixelRatio
     }
     isTouchDevice() {
         return 'ontouchstart' in window || navigator.maxTouchPoints > 0

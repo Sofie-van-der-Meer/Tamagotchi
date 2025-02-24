@@ -1,5 +1,4 @@
 import Experience from '../Experience.js'
-import Mesh from './Mesh.js'
 import Environment from './Environment.js'
 import Model from './Model.js'
 
@@ -22,8 +21,6 @@ export default class World
     }
 
     setMeshes() {
-        // this.grass = new Mesh('grass')
-        // this.soil = new Mesh('soil')
         this.environment = new Environment()
     }
 

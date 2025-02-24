@@ -1,95 +1,103 @@
 import * as THREE from 'three'
 import Debug from './Utils/Debug.js'
-import Sizes from './Utils/Sizes.js'
 import Time from './Utils/Time.js'
 import Resources from './Utils/Resources.js'
-import Camera from './Camera.js'
 import Renderer from './Renderer.js'
 import World from './World/World.js'
 
 import sourcesModels from './sourcesModels.js'
-import sourcesMeshes from './sourcesMeshes.js'
-import DomManupulation from './DomManupulation.js'
-import makeScene from './Scene.js'
-import Scene from './Scene.js'
-
 let instance = null;
 
 export default class Experience {
-    constructor(_canvas) {
-        if(instance) return instance;
+    constructor() {
+        // Singleton
+        if(instance) return instance
         instance = this
-
-        this.canvas = _canvas
+        
+        // Global access
+        window.experience = this
+        
+        // Setup
         this.debug = new Debug()
-        this.sizes = new Sizes()
         this.time = new Time()
-        this.scenes = []
-        // this.scenes.scene1 = new Scene('#scene1')
-        // console.log(this.scenes.scene1);
-        // const scene = new THREE.Scene() // this is wath we need!!
-        // this.scene1 = makeScene(document.querySelector('scene1')).scene
-        // this.scene2 = makeScene(document.querySelector('scene2')).scene
+        this.scene = new THREE.Scene()
         this.resourcesModels = new Resources(sourcesModels)
-        this.resourcesMeshes = sourcesMeshes
-        // this.camera = new Camera()
-        this.renderer = new Renderer()
         this.world = new World()
-        this.dom = new DomManupulation()
-
-        this.setScenes()
-
-        this.sizes.on('resize', () => this.resize());
-        this.time.on('tick', () => this.update());
-    }
-
-    setScenes() {
-        this.sceneOne = new Scene('sceneOne')
-        this.sceneTwo = new Scene('sceneTwo')
-
-        this.scenes.push(this.sceneOne)
-        this.scenes.push(this.sceneTwo)
+        
+        // Options
+        this.canvas1 = document.getElementById('canvasOne')
+        this.canvas2 = document.getElementById('canvasTwo')
+        this.canvas3 = document.getElementById('canvasThree')
+        
+        this.renderer1 = new Renderer(this.canvas1)
+        this.renderer2 = new Renderer(this.canvas2)
+        this.renderer3 = new Renderer(this.canvas3)
+        
+        // Resize event
+        this.renderer1.sizes.on('resize', () => this.resize())
+        this.renderer2.sizes.on('resize', () => this.resize())
+        this.renderer3.sizes.on('resize', () => this.resize())
+        
+        // Time tick event
+        this.time.on('tick', () => this.update())
     }
     
     resize()
     {
-        this.camera.resize()
-        this.renderer.resize()
-    }
-
-    update()
-    {
-        // this.camera.update()
-        // this.world.update()
-        // this.renderer.update()
+        this.renderer1.camera.resize()
+        this.renderer2.camera.resize()
+        this.renderer3.camera.resize()
+        this.renderer1.resize()
+        this.renderer2.resize()
+        this.renderer3.resize()
     }
     
-    destroy() {
-        
+    update()
+    {
+        this.world.update()
+        this.renderer1.camera.update()
+        this.renderer2.camera.update()
+        this.renderer3.camera.update()
+        this.renderer1.update()
+        this.renderer2.update()
+        this.renderer3.update()
+    }
+    
+    destroy()
+    {
         this.sizes.off('resize')
         this.time.off('tick')
-
-        this.scene.traverse( (child) => 
-        {
-            if (child instanceof THREE.Mesh)
+        
+        // Traverse the whole scene
+        this.scene.traverse((child) =>
             {
-                child.geometry.dispose()
-        
-                for (const key in child.material)
+            // Test if it's a mesh
+            if(child instanceof THREE.Mesh)
                 {
-                    const value = child.material[key]
-        
-                    if (value && typeof value.dispose === 'function')
+                child.geometry.dispose()
+                
+                // Loop through the material properties
+                for(const key in child.material)
                     {
+                    const value = child.material[key]
+                    
+                    // Test if there is a dispose function
+                    if(value && typeof value.dispose === 'function')
+                        {
                         value.dispose()
                     }
                 }
             }
         })
         
-        this.camera.controls.dispose()
-        this.renderer.instance.dispose()
-        instance = null
-
+        this.renderer1.camera.controls.dispose()
+        this.renderer2.camera.controls.dispose()
+        this.renderer3.camera.controls.dispose()
+        this.renderer1.instance.dispose()
+        this.renderer2.instance.dispose()
+        this.renderer3.instance.dispose()
+        
+        if(this.debug.active)
+            this.debug.ui.destroy()
     }
-}   
+}

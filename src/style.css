@@ -44,6 +44,9 @@ body {
     overflow-x: hidden;
     color: var(--MidnightBlack-color);
 }
+p {
+    background-color: var(--background-color);
+}
 .link {
     color: inherit;
 }
@@ -67,7 +70,7 @@ body {
     --background-color: var(--PhantomWhite-color);
 }
 
-.webgl {
+/* .webgl {
     position: fixed;
     height: 100%;
     top: 0;
@@ -75,7 +78,7 @@ body {
     z-index: -1;
 
     opacity: 0.9;
-}
+} */
 
 [class*="__title"]:not(.title--contour) {
     font-family: var(--title-font);
@@ -84,29 +87,33 @@ body {
 .parentScenes {
     position: relative;
 }
-.sceneOne {
-    --scene-height: 60%;
+.canvasOne {
+    --scene-height: 550px;
     rotate: 8deg;
     position: absolute;
-    left: 50%;
+    left: 60%;
     top: 5vh;
 }
-.sceneTwo {
-    --scene-height: 50%;
+.canvasTwo {
+    --scene-height: 450px;
     rotate: 352deg;
     position: absolute;
     bottom: 0;
-    right: 50%;
+    right: 35%;
 }
-.sceneThree {
-    --scene-height: min(40vw, 40vh);
+.canvasThree {
+    --scene-height: 400px;
     rotate: 352deg;
-    margin: 5rem;
+    margin-block: 2rem 4rem;
 }
-.scene {
+.webgl {
     border: var(--border);
     height: var(--scene-height);
     aspect-ratio: var(--scene-ratio);
+    z-index: -1;
+}
+.canvasOne {
+    z-index: 1;
 }
 .header {
     display: flex;
@@ -191,7 +198,7 @@ body {
     padding-top: 10vh;
     height: 100%;
     /* align-content: center; */
-    width: min(40vw, 0.4 * 1200px);
+    width: min(35vw, 0.35 * 1200px);
 }
 .landingCard,
 .card {

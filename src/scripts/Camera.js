@@ -1,55 +1,59 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import Sizes from './Utils/Sizes.js'
-import Debug from './Utils/Debug.js'
 
 export default class Camera
 {
-    constructor(_container)
+    constructor(_canvas, _sizes)
     {
-        this.container = _container
-        // this.experience = new Experience()
-        this.sizes = new Sizes()
-        // this.scene = this.experience.scene
-        // this.canvas = this.experience.canvas
-        this.debug = new Debug()
-        this.camera = new THREE.PerspectiveCamera(35, this.sizes.width / this.sizes.height, 0.1, 100)
+        this.experience = new Experience()
+        this.scene = this.experience.scene
+        this.debug = this.experience.debug
+        this.canvas = _canvas
+        this.sizes = _sizes
 
         if (this.debug.active)
             {
-                this.debugFolder = this.debug.ui.addFolder('camera')
+                this.debugFolder = this.debug.ui.addFolder(this.canvas.id)
             }
             
         this.setInstance()
         this.setControls()
+        
     }
 
     setInstance()
     {
-        // this.instance = new THREE.PerspectiveCamera(35, this.sizes.width / this.sizes.height, 0.1, 100)
-        this.camera.position.set(-1.65, 14, 6)
-        // this.scene.add(this.instance)
+        if (this.canvas.dataset.camera == 'Perspective') {
+            this.instance = new THREE.PerspectiveCamera(35, this.sizes.width / this.sizes.height, 0.1, 100)
+        } else if (this.canvas.dataset.camera == 'Orthographic') {
+            this.instance = new THREE.OrthographicCamera(-3, 3, 3, -3, 0.1, 100)
+        }else if (this.canvas.dataset.camera == 'OrthographicBig') {
+            this.instance = new THREE.OrthographicCamera(-2.5, 3.5, 3, -4, 0.1, 100)
+        }
+            this.instance.position.set(0, 10, 1)
+            this.scene.add(this.instance)
+
 
         // Debug
-        if (this.debug.active)
+        if (this.debugFolder)
             {
                 this.debugFolder
-                    .add(this.camera.position, 'x')
+                    .add(this.instance.position, 'x')
                     .name('cameraPositionX')
                     .min(- 180)
                     .max(180)
                     .step(0.001)
                 
                 this.debugFolder
-                    .add(this.camera.position, 'y')
+                    .add(this.instance.position, 'y')
                     .name('cameraPositionY')
                     .min(- 180)
                     .max(180)
                     .step(0.001)
                 
                 this.debugFolder
-                    .add(this.camera.position, 'z')
+                    .add(this.instance.position, 'z')
                     .name('cameraPositionZ')
                     .min(- 180)
                     .max(180)
@@ -59,18 +63,18 @@ export default class Camera
 
     setControls()
     {
-        this.controls = new OrbitControls(this.camera, this.container)
+        this.controls = new OrbitControls(this.instance, this.canvas)
         this.controls.enableDamping = true
     }
 
     resize()
     {
-        this.camera.aspect = this.sizes.width / this.sizes.height
-        this.camera.updateProjectionMatrix()
+        this.instance.aspect = this.sizes.width / this.sizes.height
+        this.instance.updateProjectionMatrix()
     }
 
     update()
     {
-        this.controls.update()
+        if (this.controls) this.controls.update()
     }
 }

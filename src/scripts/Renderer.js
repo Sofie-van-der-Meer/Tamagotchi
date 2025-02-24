@@ -1,15 +1,17 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
+import Sizes from './Utils/Sizes.js'
+import Camera from './Camera.js'
 
 export default class Renderer
 {
-    constructor()
+    constructor(_canvas)
     {
         this.experience = new Experience()
-        this.canvas = this.experience.canvas
-        this.sizes = this.experience.sizes
-        // this.scene = this.experience.scene
-        // this.camera = this.experience.camera
+        this.scene = this.experience.scene
+        this.canvas = _canvas
+        this.sizes = new Sizes(this.canvas)
+        this.camera = new Camera(this.canvas, this.sizes)
 
         this.setInstance()
     }
@@ -24,6 +26,7 @@ export default class Renderer
         this.instance.toneMappingExposure = 1.75
         this.instance.shadowMap.enabled = true
         this.instance.shadowMap.type = THREE.PCFSoftShadowMap
+        this.instance.setClearColor('#F4F4F4')
         this.instance.setSize(this.sizes.width, this.sizes.height)
         this.instance.setPixelRatio(this.sizes.pixelRatio)
     }
