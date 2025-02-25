@@ -84,31 +84,15 @@ p {
     font-family: var(--title-font);
 }
 
-.parentScenes {
-    position: relative;
-}
-.canvasOne {
-    --scene-height: 550px;
-    rotate: 8deg;
-    position: absolute;
-    left: 60%;
-    top: 5vh;
-}
-.canvasTwo {
-    --scene-height: 450px;
-    rotate: 352deg;
-    position: absolute;
-    bottom: 0;
-    right: 35%;
-}
+
+.canvasOne,
+.canvasTwo,
 .canvasThree {
-    --scene-height: 400px;
-    rotate: 352deg;
+    height: 400px;
     margin-block: 2rem 4rem;
 }
 .webgl {
     border: var(--border);
-    height: var(--scene-height);
     aspect-ratio: var(--scene-ratio);
     z-index: -1;
 }
@@ -121,13 +105,15 @@ p {
     padding: 1rem 2rem;
 }
 .logo {
-    height: 3rem;
+    min-height: 3rem;
 }
 /* .nav */
 .nav__list {
-    display: flex;
-    list-style-type: none;
+    /* display: flex;
+    list-style-type: none; */
+    display: none;
 }
+
 .nav__element,
 .headerAction {
     padding: 1rem;
@@ -157,6 +143,7 @@ p {
 
 .banner {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     gap: 1rem;
     padding: 3rem;
@@ -164,6 +151,7 @@ p {
 .banner--light {
     border-top: var(--border);
     border-bottom: var(--border);
+    background-color: var(--PhantomWhite-color);
 }
 .banner--dark {
     background-color: var(--dark-bg-color);
@@ -183,39 +171,31 @@ p {
 
 .cardgroup {
     display: flex;
-    /* .card {
-        border-right: var(--border);
-    } */
-    .card:first-child {
-        border-right: var(--border);
-    }
+    flex-direction: column;
 }
 .landing {
-    height: calc(100svh - 83px);
+    min-height: calc(100svh - 83px);
     /* padding-bottom: 40vh; */
 }
 .landingCard{
     padding-top: 10vh;
-    height: 100%;
+    min-height: 100%;
     /* align-content: center; */
-    width: min(35vw, 0.35 * 1200px);
 }
 .landingCard,
 .card {
-    padding: 1rem 3rem;
+    padding: 1rem 1rem;
 }
 .landingCard,
 .card {
     display: flex;
     flex-direction: column;
+    align-items: center;
     /* justify-content: center; */
 }
-.landingCard {
-    align-items: start;
-}
-.card {
-    align-items: center;
-}
+
+/* .card {
+} */
 .landingCard__label,
 .card__label {
     border: var(--border);
@@ -227,6 +207,7 @@ p {
 .card__title {
     margin: 1rem 0;
     font-size: 2.5rem;
+    text-align: center;
 }
 .card__title:is(.title--contour) {
     font-size: 3rem;
@@ -234,6 +215,7 @@ p {
     color: var(--VampireRed-color);
     -webkit-text-stroke: thin var(--MidnightBlack-color);
 }
+.landingCard__body,
 .card__body {
     text-align: center;
 }
@@ -247,13 +229,14 @@ p {
 
 .parentTable {
     display: flex;
+    flex-direction: column;
     .card {
-        max-width: min(55vw, 0.55 * 1200px);
+        /* max-width: min(55vw, 0.55 * 1200px); */
         padding-top: 3rem;
     }
 }
 .table {
-    width: 40vw;
+    /* width: 40vw; */
     margin: 3rem 1rem;
     border-left: var(--border);
     border-right: var(--border);
@@ -300,7 +283,7 @@ p {
 
 
 .footer {
-    padding: 3rem;
+    padding: 1rem;
 }
 .footerNav__list {
     justify-content: space-between;
@@ -324,96 +307,140 @@ p {
 }
 .footerEnd {
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
     justify-content: space-between;
 }
 .footerLogo {
     display: flex;
-    height: 5em;
+    justify-content: space-between;
+    min-height: 5em;
+}
+.hgroup__title {
+    text-transform: uppercase;
+    font-size: 2.1rem;
 }
 .hgroup {
-    padding-inline: 2rem;
+    padding-left: 2rem;
     
     .title--contour {
         font-family: var(--title-font);
         color: var(--MidnightBlack-color);
         -webkit-text-stroke: thin var(--PhantomWhite-color);
+        font-size: 1.7rem;
+        padding-top: 0.3rem;
     }
-}
-.hgroup__title {
-    text-transform: uppercase;
-    font-size: 2.1rem;
 }
 
 .copyright {
     margin-top: auto;
 }
 
-
-
-/* list of all classnames
-.webgl
-.sceneOne
-.sceneTwo
-.sceneThree
-.scene
-
-.header
-.headerLogo
-.logo
-.headerNav
-.nav
-.headerNav__list
-.headerNav__element
-.nav__list
-.nav__element
-.headerNav__link
-.nav__link
-.link
-.headerAction
-.headerAction__actionButton
-
-.landingCard
-.landingCard__label
-.landingCard__title
-.landingCard__body
-
-.banner
-.banner__body
-.banner__actionLink
-
-.cardgroup
-.card
-.card__label
-.card__title
-.card__body
-.card__actionButton
-
-.table
-
-.navElement
-.navElement__title
-.navElement__list
-.navElement_element
-.navElement__link
-
-.footerNav
-.footerNav__list
-.footerNav__element
-.footerLogo
-.copyright */
-
-/* scrollbar */
-::-webkit-scrollbar {
-    width: 0.5rem;
+@media screen and (max-width: 599px) {
+    .landing {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
-::-webkit-scrollbar-track, 
-::-webkit-scrollbar-button {
-    background: var(--MidnightBlack-color);
+
+@media screen and (min-width: 600px) {
+
+    .parentScenes {
+        position: relative;
+    }
+    .canvasOne {
+        position: absolute;
+        left: 50%;
+        top: 5vh;
+        --scene-height: 650px;
+        rotate: 8deg;
+    }
+    .canvasTwo {
+        position: absolute;
+        bottom: 0;
+        right: 42%;
+        --scene-height: 550px;
+        rotate: 352deg;
+    }
+    .canvasThree {
+        --scene-height: 400px;
+        rotate: 352deg;
+    }
+    .webgl {
+        height: var(--scene-height);
+    }
+    .nav__list {
+        display: flex;
+        list-style-type: none;
+    }
+    .cardgroup, 
+    .banner,
+    .parentTable,
+    .footerEnd {
+        flex-direction: row;
+    }
+    .landingCard{
+        /* align-content: center; */
+        width: min(60vw, 0.35 * 1200px);
+        align-items: start;
+    }
+    .landingCard,
+    .card {
+        padding: 1rem 3rem;
+    }
+    .landingCard__body,
+    .landingCard__title {
+        text-align: start;
+        justify-self: start;
+    }
+    .parentTable {
+        .card {
+            max-width: min(55vw, 0.55 * 1200px);
+        }
+    }
+    .table {
+        width: 40vw;
+    }
+    .footer {
+        padding: 3rem;
+    }
+
+
+        /* scrollbar */
+    ::-webkit-scrollbar {
+        width: 0.5rem;
+    }
+    ::-webkit-scrollbar-track, 
+    ::-webkit-scrollbar-button {
+        background: var(--PhantomWhite-color);
+    }
+    ::-webkit-scrollbar-thumb {
+        background: var(--BloodMoonSilver-color);
+        border-radius: 0.25rem;
+    }
+    ::-webkit-scrollbar-button {
+        height: 0.125rem;
+    }
 }
-::-webkit-scrollbar-thumb {
-    background: var(--VampireRed-color);
-    border-radius: 0.25rem;
-}
-::-webkit-scrollbar-button {
-    height: 0.125rem;
+
+@media screen and (min-width: 1200px) {
+    .largeScreen--border-left {
+        border-left: var(--border);
+    }
+    .largeScreen--border-right {
+        border-right: var(--border);
+    }
+    .canvasOne {
+        left: 53%;
+        top: 5vh;
+        --scene-height: 650px;
+        rotate: 8deg;
+    }
+    .canvasTwo {
+        bottom: 0;
+        right: 45%;
+        --scene-height: 550px;
+        rotate: 352deg;
+    }
 }

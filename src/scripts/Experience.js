@@ -6,6 +6,7 @@ import Renderer from './Renderer.js'
 import World from './World/World.js'
 
 import sourcesModels from './sourcesModels.js'
+import Manupulation from './Manupulation.js'
 let instance = null;
 
 export default class Experience {
@@ -23,44 +24,76 @@ export default class Experience {
         this.scene = new THREE.Scene()
         this.resourcesModels = new Resources(sourcesModels)
         this.world = new World()
-        
+        // this.manupulation = new Manupulation()
+        this.renderers = []
+
         // Options
         this.canvas1 = document.getElementById('canvasOne')
         this.canvas2 = document.getElementById('canvasTwo')
         this.canvas3 = document.getElementById('canvasThree')
         
-        this.renderer1 = new Renderer(this.canvas1)
-        this.renderer2 = new Renderer(this.canvas2)
-        this.renderer3 = new Renderer(this.canvas3)
+        if (this.canvas1 != undefined) {
+            this.renderers.renderer1 = new Renderer(this.canvas1)
+            this.renderers.renderer1.sizes.on('resize', () => this.resize())
+        }
+        if (this.canvas2 != undefined) {
+            this.renderers.renderer2 = new Renderer(this.canvas2)
+            this.renderers.renderer2.sizes.on('resize', () => this.resize())
+        }
+        if (this.canvas3 != undefined) {
+            this.renderers.renderer3 = new Renderer(this.canvas3)
+            this.renderers.renderer3.sizes.on('resize', () => this.resize())
+            this.setSetupWhenRenderersReady(this.renderers.renderer3)
+        }
         
         // Resize event
-        this.renderer1.sizes.on('resize', () => this.resize())
-        this.renderer2.sizes.on('resize', () => this.resize())
-        this.renderer3.sizes.on('resize', () => this.resize())
         
         // Time tick event
+        
         this.time.on('tick', () => this.update())
+
+        // this.setSetupWhenRenderersReady()
+
+        
     }
     
+    setSetupWhenRenderersReady(_renderer) {
+        const allRenderersReady = this.renderers.every(renderer => {
+            return (
+                renderer && 
+                renderer.scene && 
+                renderer.scene.children.length > 0 && 
+                // renderer.scene.children[4] && 
+                // renderer.scene.children[4].children > 0 && 
+                renderer.scene.children.every(child => { return child.children.length > 0}));
+        })
+        if (allRenderersReady) {
+            console.log(' all renderers and scenes are fully loaded')
+            _renderer.manupulation = new Manupulation()
+        } else {
+            requestAnimationFrame(this.setSetupWhenRenderersReady)
+        }
+    }
+
     resize()
     {
-        this.renderer1.camera.resize()
-        this.renderer2.camera.resize()
-        this.renderer3.camera.resize()
-        this.renderer1.resize()
-        this.renderer2.resize()
-        this.renderer3.resize()
+        if (this.renderers.renderer1) this.renderers.renderer1.camera.resize()
+        if (this.renderers.renderer2) this.renderers.renderer2.camera.resize()
+        if (this.renderers.renderer3) this.renderers.renderer3.camera.resize()
+        if (this.renderers.renderer1) this.renderers.renderer1.resize()
+        if (this.renderers.renderer2) this.renderers.renderer2.resize()
+        if (this.renderers.renderer3) this.renderers.renderer3.resize()
     }
     
     update()
     {
-        this.world.update()
-        this.renderer1.camera.update()
-        this.renderer2.camera.update()
-        this.renderer3.camera.update()
-        this.renderer1.update()
-        this.renderer2.update()
-        this.renderer3.update()
+        if (this.world) this.world.update()
+        if (this.renderers.renderer1) this.renderers.renderer1.camera.update()
+        if (this.renderers.renderer2) this.renderers.renderer2.camera.update()
+        if (this.renderers.renderer3) this.renderers.renderer3.camera.update()
+        if (this.renderers.renderer1) this.renderers.renderer1.update()
+        if (this.renderers.renderer2) this.renderers.renderer2.update()
+        if (this.renderers.renderer3) this.renderers.renderer3.update()
     }
     
     destroy()
@@ -90,12 +123,12 @@ export default class Experience {
             }
         })
         
-        this.renderer1.camera.controls.dispose()
-        this.renderer2.camera.controls.dispose()
-        this.renderer3.camera.controls.dispose()
-        this.renderer1.instance.dispose()
-        this.renderer2.instance.dispose()
-        this.renderer3.instance.dispose()
+        if (this.renderers.renderer1.camera.controls) this.renderers.renderer1.camera.controls.dispose()
+        if (this.renderers.renderer2.camera.controls) this.renderers.renderer2.camera.controls.dispose()
+        if (this.renderers.renderer3.camera.controls) this.renderers.renderer3.camera.controls.dispose()
+        if (this.renderers.renderer1.instance) this.renderers.renderer1.instance.dispose()
+        if (this.renderers.renderer2.instance) this.renderers.renderer2.instance.dispose()
+        if (this.renderers.renderer3.instance) this.renderers.renderer3.instance.dispose()
         
         if(this.debug.active)
             this.debug.ui.destroy()

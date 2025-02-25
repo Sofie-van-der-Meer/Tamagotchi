@@ -14,11 +14,13 @@ export default class Model
         this.resources =        this.experience.resourcesModels
         this.source =           this.resources.items[_sourcesName]
         this.sourceModel =      this.resources.sources.find(obj => obj.name == _sourcesName)
-        this.startPosition =    this.sourceModel.position
+        this.modelPosition =    this.sourceModel.position
+        this.modelRotation =    this.sourceModel.rotation
 
         if (this.debug.active)
         {
             this.debugFolder = this.debug.ui.addFolder(_sourcesName)
+            this.debugFolder.close()
         }
 
         this.setModel()
@@ -30,11 +32,63 @@ export default class Model
         this.model = this.source.scene
         this.model.scale.set(this.sourceModel.scale, this.sourceModel.scale,
             this.sourceModel.scale)
-        this.model.position.x = this.startPosition[0]
-        this.model.position.z = this.startPosition[1]
+        this.model.position.x = this.modelPosition[0]
+        this.model.position.z = this.modelPosition[1]
+        this.model.position.y = this.modelPosition[2]
+
+        this.model.rotation.x = (this.modelRotation[0] * Math.PI)
+        this.model.rotation.z = (this.modelRotation[1] * Math.PI)
+        this.model.rotation.y = (this.modelRotation[2] * Math.PI)
+
         this.scene.add(this.model)
 
         this.model.traverse((child) => child.castShadow = (child instanceof THREE.Mesh))
+
+        // Debug
+        if (this.debugFolder)
+            {
+                this.debugFolder
+                    .add(this.model.position, 'x')
+                    .name('PositionX')
+                    .min(- 3)
+                    .max(3)
+                    .step(0.001)
+
+                this.debugFolder
+                    .add(this.model.position, 'z')
+                    .name('PositionZ')
+                    .min(- 3)
+                    .max(3)
+                    .step(0.001)
+                
+                this.debugFolder
+                    .add(this.model.position, 'y')
+                    .name('PositionY')
+                    .min(- 3)
+                    .max(3)
+                    .step(0.001)
+                
+                this.debugFolder
+                    .add(this.model.rotation, 'x')
+                    .name('rotationX')
+                    .min(- 3)
+                    .max(3)
+                    .step(0.001)
+
+                this.debugFolder
+                    .add(this.model.rotation, 'z')
+                    .name('rotationZ')
+                    .min(- 3)
+                    .max(3)
+                    .step(0.001)
+                
+                this.debugFolder
+                    .add(this.model.rotation, 'y')
+                    .name('rotationY')
+                    .min(- 3)
+                    .max(3)
+                    .step(0.001)
+            }
     }
     setAnimation()
     {
