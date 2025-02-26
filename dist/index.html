@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tamagotchi</title>
-    <script src="https://kit.fontawesome.com/6d66c3d9c5.js" crossorigin="anonymous"></script>
-  <script type="module" crossorigin src="/assets/index-8dMoZzqV.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-lO1I9dbQ.css">
+    <title>Tamagotchi</title><script src="https://kit.fontawesome.com/6d66c3d9c5.js" crossorigin="anonymous"></script>
+  <script type="module" crossorigin src="/assets/index-CjfYxiM6.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-_YZJYMu7.css">
 </head>
 <body>    
     <header class="header">
@@ -47,10 +46,24 @@
                 VampiTest combines essential blood sugar monitoring with a playful, interactive experience. Our device offers you a seamless, accurate way to measure your insulin levels while taking care of your very own vampire pet. Forget about tedious health routines—VampiTest makes managing your health engaging, rewarding, and fun.
             </p>
         </section>
-
-        <canvas id="canvasOne" class="canvasOne webgl" data-camera="Perspective" data-control="true"></canvas>
-
-        <canvas id="canvasTwo" class="canvasTwo webgl" data-camera="OrthographicBig" data-control="false"></canvas>        
+        <div class="canvasFrame frameOne">
+            <img src="icons/rotate_360.svg" alt="rotate">
+            <canvas id="canvasOne" class="canvasOne webgl" data-camera="Perspective" data-control="true"></canvas>
+        </div>
+        <div class="canvasFrame frameTwo">
+            <canvas id="canvasTwo" class="canvasTwo webgl" data-camera="OrthographicBig" data-control="false"></canvas>        
+        </div>
+        <a href="simulation.html" class="frameFour">
+            <svg xmlns="http://www.w3.org/2000/svg" height="300" width="300" viewBox="0 0 300 300">
+                <path id="circlePath" fill="transparent" d="M135 135m0-90a90 90 90 110 180 90 90 90 110-180"/>
+                <path id="playPath" d="M174.1996 169.3409A52 52 130 1094.531 102.491a52 52 130 1079.6686 66.8499zM85.3384 94.7776a64 64 130 1198.0537 82.2768A64 64 130 1185.3384 94.7776zM138.8999 104.1812c2.1304.4169 3.8762 1.9145 4.5734 4.0007l13.4363 39.9933c.6527 1.9836.2579 4.1653-1.0919 5.774s-3.4299 2.3763-5.4967 2.078l-41.7189-6.2874c-2.1403-.3274-3.9535-1.7835-4.7341-3.8092s-.3951-4.313 1.003-5.9792l28.2827-33.706c1.3981-1.6661 3.5837-2.443 5.7142-2.026z"/>
+                <text font-size="40" fill="black">
+                    <textPath href="#circlePath">
+                        See it in action
+                    </textPath>
+                </text>
+            </svg>
+        </a>
     </section>
 
 
@@ -95,12 +108,19 @@
         <section class="card">
             <a href="#" class="card__label link">Product Features</a>
             <h2 class="card__title title--contour">You Give Blood, <br> Vampire Reacts</h2>
-            <canvas id="canvasThree" class="canvasThree webgl" data-camera="Orthographic" data-control="false"></canvas>
+            <div class="canvasFrame frameThree">
+                <canvas id="canvasThree" class="canvasThree webgl" data-camera="Orthographic" data-control="false"></canvas>
+            </div>
             <p class="card__body">
                 At VampiTest, we want you to focus on what really matters—your health. That’s why we created a playful, interactive way to test your blood sugar. VampiTest takes care of the rest, from tracking your levels to entertaining you with your vampire companion. No hassle, just a fun and accurate health management experience.
             </p>
             <div class="card__actionButton actionButton">
-                <a href="#" class="link">Learn More</a>
+                <h3 class="table__title">Pick your color:</h3>
+                <label><input type="radio" class="inputColor" data-color="#000000" name="coverColor" id="MidnightBlack"></label>
+                <label><input type="radio" class="inputColor" data-color="#B41C1C" name="coverColor" id="VampireRed"></label>
+                <label><input type="radio" class="inputColor" data-color="#8C8C8C" name="coverColor" id="BloodMoonSilver"></label>
+                <label><input type="radio" class="inputColor" data-color="#6A4C9C" name="coverColor" id="ShadowPurple"></label>
+                <label><input type="radio" class="inputColor" data-color="#F4F4F4" name="coverColor" id="PhantomWhite"></label>            
             </div>
         </section>
         <section class="table">

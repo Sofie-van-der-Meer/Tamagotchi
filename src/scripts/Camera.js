@@ -18,22 +18,32 @@ export default class Camera
             }
             
         this.setInstance()
-        this.setControls()
-        
     }
 
     setInstance()
     {
-        if (this.canvas.dataset.camera == 'Perspective') {
-            this.instance = new THREE.PerspectiveCamera(35, this.sizes.width / this.sizes.height, 0.1, 100)
-        } else if (this.canvas.dataset.camera == 'Orthographic') {
-            this.instance = new THREE.OrthographicCamera(-3, 3, 4, -4, 0.1, 100)
-        }else if (this.canvas.dataset.camera == 'OrthographicBig') {
-            this.instance = new THREE.OrthographicCamera(-2.5, 3.5, 4, -4, 0.1, 100)
-        }
-            this.instance.position.set(0, 10, 1)
-            this.scene.add(this.instance)
+        this.instance = new THREE.PerspectiveCamera(35, this.sizes.width / this.sizes.height, 0.1, 30)
+        let targetPosition
 
+        if (this.canvas.dataset.camera == 'Perspective') 
+        {
+            targetPosition = new THREE.Vector3(0, 2, -2)
+            this.setControls()
+        } 
+        else if (this.canvas.dataset.camera == 'Orthographic') 
+        {
+            targetPosition = new THREE.Vector3(20, 20, 0)
+        }
+        else if (this.canvas.dataset.camera == 'OrthographicBig') 
+        {
+            targetPosition = new THREE.Vector3(-20, -20, 0)
+        }
+
+        this.instance.position.set(targetPosition.x, targetPosition.y + 7, targetPosition.z + 7)
+        this.instance.lookAt(targetPosition)
+        this.scene.add(this.instance)
+
+        console.log(this.instance.rotation)
 
         // Debug
         if (this.debugFolder)

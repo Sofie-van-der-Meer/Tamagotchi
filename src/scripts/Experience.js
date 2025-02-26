@@ -10,7 +10,9 @@ import Manupulation from './Manupulation.js'
 let instance = null;
 
 export default class Experience {
-    constructor() {
+    constructor(
+        // _canvasHtmlElement
+    ) {
         // Singleton
         if(instance) return instance
         instance = this
@@ -24,13 +26,23 @@ export default class Experience {
         this.scene = new THREE.Scene()
         this.resourcesModels = new Resources(sourcesModels)
         this.world = new World()
-        // this.manupulation = new Manupulation()
         this.renderers = []
 
         // Options
+        
         this.canvas1 = document.getElementById('canvasOne')
         this.canvas2 = document.getElementById('canvasTwo')
         this.canvas3 = document.getElementById('canvasThree')
+
+        // if (_canvasHtmlElement.id == 'canvasOne') {
+        //     this.canvas1 = _canvasHtmlElement
+        // }
+        // if (_canvasHtmlElement.id == 'canvasTwo') {
+        //     this.canvas2 = _canvasHtmlElement
+        // }
+        // if (_canvasHtmlElement.id == 'canvasThree') {
+        //     this.canvas3 = _canvasHtmlElement
+        // }
         
         if (this.canvas1 != undefined) {
             this.renderers.renderer1 = new Renderer(this.canvas1)
@@ -43,21 +55,18 @@ export default class Experience {
         if (this.canvas3 != undefined) {
             this.renderers.renderer3 = new Renderer(this.canvas3)
             this.renderers.renderer3.sizes.on('resize', () => this.resize())
-            this.setSetupWhenRenderersReady(this.renderers.renderer3)
+            // this.setSetupWhenRenderersReady()
         }
         
-        // Resize event
+        this.setSetupWhenRenderersReady()
         
         // Time tick event
-        
         this.time.on('tick', () => this.update())
-
-        // this.setSetupWhenRenderersReady()
-
+        
         
     }
     
-    setSetupWhenRenderersReady(_renderer) {
+    setSetupWhenRenderersReady() {
         const allRenderersReady = this.renderers.every(renderer => {
             return (
                 renderer && 
@@ -68,8 +77,7 @@ export default class Experience {
                 renderer.scene.children.every(child => { return child.children.length > 0}));
         })
         if (allRenderersReady) {
-            console.log(' all renderers and scenes are fully loaded')
-            _renderer.manupulation = new Manupulation()
+            this.manupulation = new Manupulation()
         } else {
             requestAnimationFrame(this.setSetupWhenRenderersReady)
         }

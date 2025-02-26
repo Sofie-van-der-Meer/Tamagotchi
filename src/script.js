@@ -2,6 +2,10 @@ import Experience from "./scripts/Experience.js";
 
 new Experience();
 
+// const firstCanvas = new Experience(document.querySelector('#canvasOne'))
+// const secondCanvas = new Experience(document.querySelector('#canvasTwo'))
+// const thirdCanvas = new Experience(document.querySelector('#canvasThree'))
+
 // const dialogIntroScreen = document.getElementById('introScreen')
 // const dialogIntroGame = document.getElementById('introGame')
 // const fullScreenBtn = document.getElementById('toggleFullScreen')

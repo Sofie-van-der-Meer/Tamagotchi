@@ -8,7 +8,6 @@ export default class World
     {
         this.experience = new Experience()
         this.resourcesModels = this.experience.resourcesModels
-        console.log(this.resourcesModels);
 
         this.setModels()
         this.setMeshes()
@@ -17,7 +16,8 @@ export default class World
     setModels() {
         this.resourcesModels.on('ready', () =>
         {
-            this.device = new Model('device')
+            this.deviceCanvasOne = new Model('device')
+            this.vampireCanvasTwo = new Model('vampire_longbody')
             this.icon1 = new Model('icon1')
             this.icon2 = new Model('icon2')
             this.icon3 = new Model('icon3')
@@ -26,6 +26,8 @@ export default class World
             this.icon6 = new Model('icon6')
             this.icon7 = new Model('icon7')
             this.icon8 = new Model('icon8')
+            this.vampire = new Model('vampire')
+            this.deviceCanvasThree = new Model('device_change_cover')
         })
     }
 
