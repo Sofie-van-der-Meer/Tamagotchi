@@ -9,7 +9,6 @@
 			"name":"Scene",
 			"nodes":[
 				0,
-				1,
 				2,
 				3,
 				4,
@@ -18,7 +17,8 @@
 				7,
 				8,
 				9,
-				10
+				10,
+				11
 			]
 		}
 	],
@@ -39,6 +39,12 @@
 			]
 		},
 		{
+			"name":"Curves"
+		},
+		{
+			"children":[
+				1
+			],
 			"mesh":1,
 			"name":"body",
 			"rotation":[
@@ -189,6 +195,119 @@
 			]
 		}
 	],
+	"materials":[
+		{
+			"doubleSided":true,
+			"name":"Material.baseballbat",
+			"pbrMetallicRoughness":{
+				"baseColorFactor":[
+					0.20874570310115814,
+					0.12171241641044617,
+					0.01210093591362238,
+					1
+				],
+				"metallicFactor":0,
+				"roughnessFactor":0.6742738485336304
+			}
+		},
+		{
+			"doubleSided":true,
+			"name":"Material.skin",
+			"pbrMetallicRoughness":{
+				"baseColorFactor":[
+					0.2874460220336914,
+					0.14126592874526978,
+					0.111932672560215,
+					1
+				],
+				"metallicFactor":0.0456431545317173,
+				"roughnessFactor":0.9232364892959595
+			}
+		},
+		{
+			"doubleSided":true,
+			"name":"Material.wings",
+			"pbrMetallicRoughness":{
+				"baseColorFactor":[
+					0.127439945936203,
+					0.11953993141651154,
+					0.14702942967414856,
+					1
+				],
+				"metallicFactor":0.11618257313966751,
+				"roughnessFactor":0.910788357257843
+			}
+		},
+		{
+			"doubleSided":true,
+			"name":"Material.armlegfingers",
+			"pbrMetallicRoughness":{
+				"baseColorFactor":[
+					0.6514173746109009,
+					0.5149077773094177,
+					0.5457169413566589,
+					1
+				],
+				"metallicFactor":0.2033195048570633,
+				"roughnessFactor":0.5
+			}
+		},
+		{
+			"doubleSided":true,
+			"name":"Material.001",
+			"pbrMetallicRoughness":{
+				"baseColorFactor":[
+					0,
+					0,
+					0,
+					1
+				],
+				"metallicFactor":0.22406639158725739,
+				"roughnessFactor":0.16390040516853333
+			}
+		},
+		{
+			"doubleSided":true,
+			"name":"Material",
+			"pbrMetallicRoughness":{
+				"baseColorFactor":[
+					0.9046552777290344,
+					0.9046619534492493,
+					0.9046615958213806,
+					1
+				],
+				"metallicFactor":0,
+				"roughnessFactor":0.5
+			}
+		},
+		{
+			"doubleSided":true,
+			"name":"Material.red",
+			"pbrMetallicRoughness":{
+				"baseColorFactor":[
+					0.45640867948532104,
+					0.011612201109528542,
+					0.011612259782850742,
+					1
+				],
+				"metallicFactor":0,
+				"roughnessFactor":0.5
+			}
+		},
+		{
+			"doubleSided":true,
+			"name":"Material.noseBack",
+			"pbrMetallicRoughness":{
+				"baseColorFactor":[
+					0.6514173746109009,
+					0.46777576208114624,
+					0.417880654335022,
+					1
+				],
+				"metallicFactor":0.02489626593887806
+			}
+		}
+	],
 	"meshes":[
 		{
 			"name":"Cylinder",
@@ -199,7 +318,8 @@
 						"NORMAL":1,
 						"TEXCOORD_0":2
 					},
-					"indices":3
+					"indices":3,
+					"material":0
 				}
 			]
 		},
@@ -212,7 +332,8 @@
 						"NORMAL":5,
 						"TEXCOORD_0":6
 					},
-					"indices":7
+					"indices":7,
+					"material":1
 				}
 			]
 		},
@@ -225,7 +346,8 @@
 						"NORMAL":9,
 						"TEXCOORD_0":10
 					},
-					"indices":11
+					"indices":11,
+					"material":2
 				}
 			]
 		},
@@ -238,7 +360,8 @@
 						"NORMAL":13,
 						"TEXCOORD_0":14
 					},
-					"indices":15
+					"indices":15,
+					"material":3
 				}
 			]
 		},
@@ -251,7 +374,8 @@
 						"NORMAL":17,
 						"TEXCOORD_0":18
 					},
-					"indices":19
+					"indices":19,
+					"material":3
 				}
 			]
 		},
@@ -264,7 +388,8 @@
 						"NORMAL":21,
 						"TEXCOORD_0":22
 					},
-					"indices":23
+					"indices":23,
+					"material":3
 				}
 			]
 		},
@@ -277,7 +402,8 @@
 						"NORMAL":25,
 						"TEXCOORD_0":26
 					},
-					"indices":27
+					"indices":27,
+					"material":4
 				}
 			]
 		},
@@ -290,7 +416,8 @@
 						"NORMAL":29,
 						"TEXCOORD_0":30
 					},
-					"indices":31
+					"indices":31,
+					"material":5
 				}
 			]
 		},
@@ -303,7 +430,8 @@
 						"NORMAL":33,
 						"TEXCOORD_0":34
 					},
-					"indices":35
+					"indices":35,
+					"material":6
 				}
 			]
 		},
@@ -316,7 +444,8 @@
 						"NORMAL":37,
 						"TEXCOORD_0":38
 					},
-					"indices":39
+					"indices":39,
+					"material":1
 				}
 			]
 		},
@@ -329,7 +458,8 @@
 						"NORMAL":41,
 						"TEXCOORD_0":42
 					},
-					"indices":43
+					"indices":43,
+					"material":7
 				}
 			]
 		}

@@ -23,24 +23,26 @@ export default class Camera
     setInstance()
     {
         this.instance = new THREE.PerspectiveCamera(35, this.sizes.width / this.sizes.height, 0.1, 30)
-        let targetPosition
+        // let this.targetPosition
 
         if (this.canvas.dataset.camera == 'Perspective') 
         {
-            targetPosition = new THREE.Vector3(0, 2, -2)
+            this.targetPosition = new THREE.Vector3(0, 2, -7)
             this.setControls()
         } 
         else if (this.canvas.dataset.camera == 'Orthographic') 
         {
-            targetPosition = new THREE.Vector3(20, 20, 0)
+            this.targetPosition = new THREE.Vector3(20, 20, 0)
+            // this.setMouseMove()
         }
         else if (this.canvas.dataset.camera == 'OrthographicBig') 
         {
-            targetPosition = new THREE.Vector3(-20, -20, 0)
+            this.targetPosition = new THREE.Vector3(-20, -20, 0)
+            // this.setMouseMove()
         }
 
-        this.instance.position.set(targetPosition.x, targetPosition.y + 7, targetPosition.z + 7)
-        this.instance.lookAt(targetPosition)
+        this.instance.position.set(this.targetPosition.x, this.targetPosition.y + 7, this.targetPosition.z + 7)
+        this.instance.lookAt(this.targetPosition)
         this.scene.add(this.instance)
 
         console.log(this.instance.rotation)
@@ -77,6 +79,28 @@ export default class Camera
         this.controls.enableDamping = true
     }
 
+    setMouseMove() {
+        this.startPosition = this.instance.position
+        this.cursor = {}
+        this.cursor.x = this.startPosition.x
+        this.cursor.y = this.startPosition.y
+        console.log(this.startPosition, this.cursor.x, this.cursor.y)
+
+        this.canvas.addEventListener('mousemove', (event) => {
+        if (this.cursor.x == 0) {
+            this.cursor.x += this.startPosition.x + ((event.clientX / this.sizes.width - 0.5) * 0.1)
+        } else {
+            this.cursor.x = ((event.clientX / this.sizes.width - 0.5) * 0.1)
+        }
+        if (this.cursor.y == 0) {
+            this.cursor.y = this.startPosition.x + ((event.clientY / this.sizes.height - 0.5) * 0.1)
+        } else {
+            this.cursor.y += - ((event.clientY / this.sizes.height - 0.5) * 0.1)
+        }
+        console.log(this.cursor.x, this.cursor.y)
+        })
+    }
+
     resize()
     {
         this.instance.aspect = this.sizes.width / this.sizes.height
@@ -86,5 +110,13 @@ export default class Camera
     update()
     {
         if (this.controls) this.controls.update()
+        if (this.cursor &&
+            this.cursor.x != 0 &&
+            this.cursor.y != 0
+        ) {
+            this.instance.position.x = this.cursor.x 
+            this.instance.position.y = this.cursor.y 
+            this.instance.lookAt(this.targetPosition)
+        }
     }
 }

@@ -82,7 +82,7 @@ export default [
     {
         name: 'vampire',
         type: 'gltfModel',
-        path: 'models/Vampire/vampire.gltf',
+        path: 'models/Vampire/vampire_longbody.gltf',
         scale: 0.3,
         position: [0, -0.45, 0.5],
         rotation: [1.5, 0, 1]
@@ -93,6 +93,8 @@ export default [
         path: 'models/Vampire/vampire_longbody.gltf',
         scale: 1.2,
         position: [-20.3, 0, -21],
-        rotation: [1.75, 0.05, 1.05]
+        rotation: [1.75, 0.05, 1.05],
+        // position: [-19, 0,2, -16.4],
+        // rotation: [1.75, 0.2, 1.4]
     }
 ]

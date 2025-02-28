@@ -50,43 +50,43 @@ export default class Model
                 this.debugFolder
                     .add(this.model.position, 'x')
                     .name('PositionX')
-                    .min(- 3)
-                    .max(3)
+                    .min(- 100)
+                    .max(100)
                     .step(0.001)
 
                 this.debugFolder
                     .add(this.model.position, 'z')
                     .name('PositionZ')
-                    .min(- 3)
-                    .max(3)
+                    .min(- 100)
+                    .max(100)
                     .step(0.001)
                 
                 this.debugFolder
                     .add(this.model.position, 'y')
                     .name('PositionY')
-                    .min(- 3)
-                    .max(3)
+                    .min(- 100)
+                    .max(100)
                     .step(0.001)
                 
                 this.debugFolder
                     .add(this.model.rotation, 'x')
                     .name('rotationX')
-                    .min(- 3)
-                    .max(3)
+                    .min(- 6.3)
+                    .max(6.3)
                     .step(0.001)
 
                 this.debugFolder
                     .add(this.model.rotation, 'z')
                     .name('rotationZ')
-                    .min(- 3)
-                    .max(3)
+                    .min(- 6.3)
+                    .max(6.3)
                     .step(0.001)
                 
                 this.debugFolder
                     .add(this.model.rotation, 'y')
                     .name('rotationY')
-                    .min(- 3)
-                    .max(3)
+                    .min(- 6.3)
+                    .max(6.3)
                     .step(0.001)
             }
     }
